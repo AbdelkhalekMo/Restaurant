@@ -126,10 +126,41 @@
                 <div id="cartItems" class="mb-4">
                     <!-- Cart items will be dynamically inserted here -->
                 </div>
-                <div class="d-flex justify-content-between align-items-center border-top pt-3">
-                    <h5 class="mb-0">Total:</h5>
-                    <h5 class="mb-0 cart-total" id="cartTotal">$0.00</h5>
+                <!-- Delivery Option in Cart -->
+                <div class="delivery-option mt-3 mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="cartDeliveryOption" onchange="updateCartTotal()">
+                        <label class="form-check-label" for="cartDeliveryOption">
+                            <strong>Add Delivery Service (+$25)</strong>
+                            <small class="text-muted d-block">Check this if you want home delivery</small>
+                        </label>
+                    </div>
+                    
+                    <!-- Hidden Location Detection -->
+                    <div class="form-check mt-2" id="locationCheckContainer" style="display: none;">
+                        <input class="form-check-input" type="checkbox" id="useCurrentLocation">
+                        <label class="form-check-label" for="useCurrentLocation">
+                            Use my current location for delivery
+                        </label>
+                    </div>
                 </div>
+
+                <!-- Cart Total with Delivery -->
+                <div class="cart-summary">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span>Subtotal:</span>
+                        <span id="cartSubtotal">$0.00</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-2" id="cartDeliveryFeeRow" style="display: none;">
+                        <span>Delivery Fee:</span>
+                        <span>$25.00</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-top pt-3">
+                        <h5 class="mb-0">Total:</h5>
+                        <h5 class="mb-0 cart-total" id="cartTotal">$0.00</h5>
+                    </div>
+                </div>
+                
                 <div class="text-center mt-4">
                     <button class="btn btn-checkout btn-lg w-100" onclick="proceedToOrder()">
                         Proceed to Order <i class="fas fa-arrow-right ms-2"></i>
@@ -142,65 +173,73 @@
     <!-- Order Section -->
     <section class="py-5 bg-light" id="orderSection">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="card shadow">
-                        <div class="card-header bg-primary text-white">
-                            <h4 class="mb-0"><i class="fas fa-clipboard-list me-2"></i>Complete Your Order</h4>
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0"><i class="fas fa-clipboard-list me-2"></i>Complete Your Order</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form id="orderForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="customerName" class="form-label">Full Name *</label>
+                                <input type="text" class="form-control" id="customerName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="customerPhone" class="form-label">Phone Number *</label>
+                                <input type="tel" class="form-control" id="customerPhone" required>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <form id="orderForm">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="customerName" class="form-label">Full Name *</label>
-                                        <input type="text" class="form-control" id="customerName" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="customerPhone" class="form-label">Phone Number *</label>
-                                        <input type="tel" class="form-control" id="customerPhone" required>
-                                    </div>
-                                </div>
 
-                                <!-- Location Section -->
-                                <div class="location-section">
-                                    <h5><i class="fas fa-map-marker-alt me-2"></i>Delivery Location</h5>
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" id="useCurrentLocation">
-                                        <label class="form-check-label" for="useCurrentLocation">
-                                            Use my current location
-                                        </label>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="deliveryAddress" class="form-label">Delivery Address *</label>
-                                        <textarea class="form-control" id="deliveryAddress" rows="3" required></textarea>
-                                    </div>
-                                </div>
 
-                                <!-- Payment Method -->
-                                <div class="mb-4">
-                                    <h5><i class="fas fa-credit-card me-2"></i>Payment Method *</h5>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="paymentMethod" id="payInHand" value="Pay in Hand" required checked>
-                                        <label class="form-check-label" for="payInHand">
-                                            Pay in Hand (Cash on Delivery)
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="paymentMethod" id="instapay" value="Instapay" required>
-                                        <label class="form-check-label" for="instapay">
-                                            Instapay Transfer
-                                        </label>
-                                    </div>
-                                </div>
 
-                                <div class="text-center">
-                                    <button type="submit" class="btn whatsapp-btn btn-lg">
-                                        <i class="fab fa-whatsapp me-2"></i>Order via WhatsApp
-                                    </button>
-                                </div>
-                            </form>
+                        <!-- Additional Notes Section -->
+                        <div class="notes-section mb-4">
+                            <h5><i class="fas fa-sticky-note me-2"></i>Additional Information</h5>
+                            <div class="mb-3">
+                                <label for="customerNotes" class="form-label">Special Instructions or Notes</label>
+                                <textarea class="form-control" id="customerNotes" rows="3" placeholder="Any special requests, dietary restrictions, or additional information..."></textarea>
+                            </div>
                         </div>
-                    </div>
+
+                        <!-- Order Summary -->
+                        <div class="order-summary mb-4 p-3 bg-light rounded">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>Subtotal:</span>
+                                <span id="orderSubtotal">$0.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-2" id="deliveryFeeRow" style="display: none;">
+                                <span>Delivery Fee:</span>
+                                <span id="deliveryFeeAmount">$25.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center border-top pt-2">
+                                <h5 class="mb-0">Total:</h5>
+                                <h5 class="mb-0 text-primary" id="orderTotal">$0.00</h5>
+                            </div>
+                        </div>
+
+                        <!-- Payment Method -->
+                        <div class="mb-4">
+                            <h5><i class="fas fa-credit-card me-2"></i>Payment Method *</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="payInHand" value="Pay in Hand" required checked>
+                                <label class="form-check-label" for="payInHand">
+                                    Pay in Hand (Cash on Delivery)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="instapay" value="Instapay" required>
+                                <label class="form-check-label" for="instapay">
+                                    Instapay Transfer
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn whatsapp-btn btn-lg w-100">
+                                <i class="fab fa-whatsapp me-2"></i>Order via WhatsApp
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

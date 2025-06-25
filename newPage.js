@@ -236,10 +236,9 @@ function addToCart(itemId) {
 // Update cart display
 function updateCartDisplay() {
     const cartItemsContainer = document.getElementById('cartItems');
-    const cartTotalElement = document.getElementById('cartTotal');
     const cartCountElement = document.getElementById('cart-count');
     
-    if (!cartItemsContainer || !cartTotalElement || !cartCountElement) return;
+    if (!cartItemsContainer || !cartCountElement) return;
     
     // Update cart count
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -254,17 +253,16 @@ function updateCartDisplay() {
                 <small>Browse our delicious menu and add items to get started!</small>
             </div>
         `;
-        cartTotalElement.textContent = '$0.00';
+        updateCartTotal();
+        updateOrderSummary();
         return;
     }
     
     // Generate cart items HTML
     let cartHTML = '';
-    let total = 0;
     
     cart.forEach((item, index) => {
         const itemTotal = item.price * item.quantity;
-        total += itemTotal;
         
         cartHTML += `
             <div class="cart-item">
@@ -289,6 +287,45 @@ function updateCartDisplay() {
     });
     
     cartItemsContainer.innerHTML = cartHTML;
+    updateCartTotal();
+    updateOrderSummary();
+}
+
+// Update cart total with delivery fee
+function updateCartTotal() {
+    const cartSubtotalElement = document.getElementById('cartSubtotal');
+    const cartTotalElement = document.getElementById('cartTotal');
+    const cartDeliveryFeeRow = document.getElementById('cartDeliveryFeeRow');
+    const locationCheckContainer = document.getElementById('locationCheckContainer');
+    
+    if (!cartSubtotalElement || !cartTotalElement) return;
+    
+    // Calculate subtotal
+    let subtotal = 0;
+    cart.forEach(item => {
+        subtotal += item.price * item.quantity;
+    });
+    
+    // Check delivery option
+    const deliveryCheckbox = document.getElementById('cartDeliveryOption');
+    const isDelivery = deliveryCheckbox && deliveryCheckbox.checked;
+    const deliveryFee = isDelivery ? 25 : 0;
+    
+    // Show/hide location option based on delivery selection
+    if (locationCheckContainer) {
+        locationCheckContainer.style.display = isDelivery ? 'block' : 'none';
+    }
+    
+    // Update cart display
+    cartSubtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+    
+    if (deliveryFee > 0) {
+        cartDeliveryFeeRow.style.display = 'flex';
+    } else {
+        cartDeliveryFeeRow.style.display = 'none';
+    }
+    
+    const total = subtotal + deliveryFee;
     cartTotalElement.textContent = `$${total.toFixed(2)}`;
 }
 
@@ -401,12 +438,46 @@ function renderMenuItems() {
     });
 }
 
+// Update order summary in the order form
+function updateOrderSummary() {
+    const orderSubtotalElement = document.getElementById('orderSubtotal');
+    const orderTotalElement = document.getElementById('orderTotal');
+    const deliveryFeeRow = document.getElementById('deliveryFeeRow');
+    
+    if (!orderSubtotalElement || !orderTotalElement) return;
+    
+    // Calculate cart subtotal
+    let subtotal = 0;
+    cart.forEach(item => {
+        subtotal += item.price * item.quantity;
+    });
+    
+    // Check if delivery is selected from cart
+    const deliveryCheckbox = document.getElementById('cartDeliveryOption');
+    const deliveryFee = deliveryCheckbox && deliveryCheckbox.checked ? 25 : 0;
+    
+    // Update display
+    orderSubtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+    
+    if (deliveryFee > 0) {
+        deliveryFeeRow.style.display = 'flex';
+    } else {
+        deliveryFeeRow.style.display = 'none';
+    }
+    
+    const total = subtotal + deliveryFee;
+    orderTotalElement.textContent = `$${total.toFixed(2)}`;
+}
+
+
+
 // Proceed to order
 function proceedToOrder() {
     const orderSection = document.getElementById('orderSection');
     if (!orderSection) return;
     
     if (cart.length > 0) {
+        updateOrderSummary(); // Update the order summary when proceeding to order
         orderSection.scrollIntoView({ behavior: 'smooth' });
     } else {
         showToast('Your cart is empty. Add items first.', 'error');
@@ -491,34 +562,41 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Initialize order summary
+    updateOrderSummary();
+    
     // Handle location checkbox
     const useLocationCheckbox = document.getElementById('useCurrentLocation');
     if (useLocationCheckbox) {
         useLocationCheckbox.addEventListener('change', function() {
-            const deliveryAddressInput = document.getElementById('deliveryAddress');
             if (this.checked) {
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function(position) {
                         const lat = position.coords.latitude;
                         const lng = position.coords.longitude;
                         const mapLink = `https://www.google.com/maps?q=${lat},${lng}`;
-                        deliveryAddressInput.value = `Approx. Location: Lat: ${lat.toFixed(4)}, Lng: ${lng.toFixed(4)}. (Map: ${mapLink})`;
-                        deliveryAddressInput.readOnly = true;
+                        
+                        // Store location data in a global variable for background use
+                        window.customerLocation = {
+                            lat: lat,
+                            lng: lng,
+                            mapLink: mapLink,
+                            address: `Lat: ${lat.toFixed(4)}, Lng: ${lng.toFixed(4)}`
+                        };
+                        
+                        showToast('Location detected successfully!', 'success', 2000);
                     }, function() {
-                        showToast('Unable to get your location. Please enter address manually.', 'info');
+                        showToast('Unable to get your location. Please try again.', 'error');
                         useLocationCheckbox.checked = false;
-                        deliveryAddressInput.value = '';
-                        deliveryAddressInput.readOnly = false;
+                        window.customerLocation = null;
                     });
                 } else {
-                    showToast('Geolocation is not supported by this browser.', 'info');
+                    showToast('Geolocation is not supported by this browser.', 'error');
                     this.checked = false;
-                    deliveryAddressInput.value = '';
-                    deliveryAddressInput.readOnly = false;
+                    window.customerLocation = null;
                 }
             } else {
-                deliveryAddressInput.value = '';
-                deliveryAddressInput.readOnly = false;
+                window.customerLocation = null;
             }
         });
     }
@@ -536,35 +614,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const name = document.getElementById('customerName').value;
             const phone = document.getElementById('customerPhone').value;
-            const address = document.getElementById('deliveryAddress').value;
+            const customerNotes = document.getElementById('customerNotes').value;
+            const deliveryOption = document.getElementById('cartDeliveryOption').checked;
             
             const selectedPaymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
             const paymentMethod = selectedPaymentMethod ? selectedPaymentMethod.value : 'Not specified';
-
-            let plainAddress = address;
-            if (address.includes("(Map:")) {
-                plainAddress = address.substring(0, address.indexOf("(Map:")).trim();
-            }
 
             // Create order summary for restaurant
             let orderText = `🍽️ *NEW RESTAURANT ORDER* 🍽️\n\n`;
             orderText += `👤 *Customer Details:*\n`;
             orderText += `   - Name: ${name}\n`;
             orderText += `   - Phone: ${phone}\n`;
-            orderText += `   - Address: ${plainAddress}\n`;
-            if (address.includes("https://www.google.com/maps?q=")) {
-                const mapUrl = address.substring(address.indexOf("https://www.google.com/maps?q="), address.lastIndexOf(")")).trim();
-                orderText += `   - Map Link: ${mapUrl}\n`;
+            orderText += `   - Delivery: ${deliveryOption ? 'Yes (+$25)' : 'No (Pickup)'}\n`;
+            
+            // Add location information if available and delivery is selected
+            if (deliveryOption && window.customerLocation) {
+                orderText += `   - Location: ${window.customerLocation.address}\n`;
+                orderText += `   - Map Link: ${window.customerLocation.mapLink}\n`;
+            }
+            
+            if (customerNotes.trim()) {
+                orderText += `   - Special Notes: ${customerNotes}\n`;
             }
             orderText += `   - Payment Method: ${paymentMethod}\n`;
             orderText += `\n🛒 *Order Summary:*\n`;
             orderText += `-------------------------------------\n`;
             
-            let total = 0;
+            let subtotal = 0;
             let totalQuantity = 0;
             cart.forEach((item, index) => {
                 const itemTotal = item.price * item.quantity;
-                total += itemTotal;
+                subtotal += itemTotal;
                 totalQuantity += item.quantity;
                 orderText += `*Item ${index + 1}: ${item.name}*\n`;
                 orderText += `   - Category: ${item.category.replace('-', ' ').toUpperCase()}\n`;
@@ -574,7 +654,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 orderText += `-------------------------------------\n`;
             });
             
+            const deliveryFee = deliveryOption ? 25 : 0;
+            const total = subtotal + deliveryFee;
+            
             orderText += `\n📦 *Total Items: ${totalQuantity}*\n`;
+            orderText += `💰 *Subtotal: $${subtotal.toFixed(2)}*\n`;
+            if (deliveryFee > 0) {
+                orderText += `🚚 *Delivery Fee: $${deliveryFee.toFixed(2)}*\n`;
+            }
             orderText += `💰 *GRAND TOTAL: $${total.toFixed(2)}*\n\n`;
             orderText += `Please confirm this order and provide estimated delivery time.\n`;
             orderText += `Thank you for choosing Taste Heaven! 🙏`;
