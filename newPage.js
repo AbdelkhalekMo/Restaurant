@@ -24,6 +24,56 @@ const menuPDFs = [
 
 // Menu items data
 const menuItems = {
+    'appetizers': [
+        {
+            id: 101,
+            name: 'حمص بالطحينة',
+            description: 'حمص كريمي مع الطحينة وزيت الزيتون والبقدونس، يُقدم مع الخبز العربي الطازج.',
+            price: 8.99,
+            image: 'https://images.unsplash.com/photo-1541554515219-543db1496ea4?w=400&h=300&fit=crop',
+            category: 'appetizers'
+        },
+        {
+            id: 102,
+            name: 'متبل الباذنجان',
+            description: 'باذنجان مشوي مع الطحينة والثوم والليمون، طبق شامي تقليدي بنكهة مميزة.',
+            price: 9.99,
+            image: 'https://images.unsplash.com/photo-1564757286322-0672500e0b95?w=400&h=300&fit=crop',
+            category: 'appetizers'
+        },
+        {
+            id: 103,
+            name: 'فتة حمص',
+            description: 'خبز محمص مع الحمص واللبن والطحينة والصنوبر المحمص، وجبة شهية ومشبعة.',
+            price: 12.99,
+            image: 'https://images.unsplash.com/photo-1599759067470-7f9a5bb18709?w=400&h=300&fit=crop',
+            category: 'appetizers'
+        },
+        {
+            id: 104,
+            name: 'ورق عنب',
+            description: 'ورق عنب محشي بالأرز والخضار والأعشاب الطازجة، يُقدم مع اللبن وشرائح الليمون.',
+            price: 11.99,
+            image: 'https://images.unsplash.com/photo-1590746768817-5f7c9fb0e90b?w=400&h=300&fit=crop',
+            category: 'appetizers'
+        },
+        {
+            id: 105,
+            name: 'كبة نية',
+            description: 'كبة نية شامية تقليدية مع البرغل واللحم النيء والبصل والبهارات، طبق للذواقة.',
+            price: 15.99,
+            image: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=300&fit=crop',
+            category: 'appetizers'
+        },
+        {
+            id: 106,
+            name: 'سلطة فتوش',
+            description: 'سلطة خضار مشكلة مع الخبز المحمص والسماق ودبس الرمان، منعشة وصحية.',
+            price: 10.99,
+            image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop',
+            category: 'appetizers'
+        }
+    ],
     'main-meals': [
         {
             id: 1,
@@ -425,8 +475,8 @@ function renderMenuItems() {
                                     <span id="quantity-${item.id}">${itemQuantities[item.id]}</span>
                                     <button onclick="changeQuantity(${item.id}, 1)">+</button>
                                 </div>
-                                <button class="add-to-cart-btn" onclick="addToCart(${item.id})">
-                                    <i class="fas fa-plus ms-2"></i>أضف للسلة
+                                                        <button class="add-to-cart-btn" onclick="addToCart(${item.id})">
+                            <i class="fas fa-plus ms-2"></i>أضف إلي طلبك
                                 </button>
                             </div>
                         </div>
@@ -493,7 +543,7 @@ function initRainEffect() {
     
     const ctx = canvas.getContext('2d');
     const drops = [];
-    const maxDrops = 100;
+    const maxDrops = 50; // Reduced from 100 to 50 (half the amount)
     
     function resizeCanvas() {
         const heroSection = document.querySelector('.hero-section');
@@ -507,7 +557,7 @@ function initRainEffect() {
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
                 length: Math.random() * 15 + 5,
-                speed: Math.random() * 5 + 2
+                speed: Math.random() * 2.5 + 1 // Reduced from (5 + 2) to (2.5 + 1) - half the speed
             });
         }
     }
@@ -601,6 +651,35 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Handle name validation for WhatsApp button
+    const customerNameInput = document.getElementById('customerName');
+    const whatsappButton = orderForm.querySelector('button[type="submit"]');
+    
+    // Initially disable the WhatsApp button
+    if (whatsappButton) {
+        whatsappButton.disabled = true;
+        whatsappButton.style.opacity = '0.6';
+        whatsappButton.style.cursor = 'not-allowed';
+    }
+    
+    // Add event listener for name validation
+    if (customerNameInput && whatsappButton) {
+        customerNameInput.addEventListener('input', function() {
+            const nameValue = this.value.trim();
+            if (nameValue.length > 0) {
+                // Enable button
+                whatsappButton.disabled = false;
+                whatsappButton.style.opacity = '1';
+                whatsappButton.style.cursor = 'pointer';
+            } else {
+                // Disable button
+                whatsappButton.disabled = true;
+                whatsappButton.style.opacity = '0.6';
+                whatsappButton.style.cursor = 'not-allowed';
+            }
+        });
+    }
+    
     // Handle order form submission
     const orderForm = document.getElementById('orderForm');
     if (orderForm) {
@@ -612,8 +691,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            const name = document.getElementById('customerName').value;
-            const phone = document.getElementById('customerPhone').value;
+            const name = document.getElementById('customerName').value.trim();
+            const phone = document.getElementById('customerPhone').value.trim();
+            
+            // Additional validation with Arabic messages
+            if (!name) {
+                showToast('يرجى ملء حقل الاسم', 'error');
+                document.getElementById('customerName').focus();
+                return;
+            }
+            
+            if (!phone) {
+                showToast('يرجى ملء حقل رقم الهاتف', 'error');
+                document.getElementById('customerPhone').focus();
+                return;
+            }
             const customerNotes = document.getElementById('customerNotes').value;
             const deliveryOption = document.getElementById('cartDeliveryOption').checked;
             
@@ -689,6 +781,44 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize cart display
     updateCartDisplay();
+    
+    // Enhanced WhatsApp hero button functionality
+    const whatsappHeroButton = document.getElementById('whatsappHeroButton');
+    if (whatsappHeroButton) {
+        whatsappHeroButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create a general contact message for hero WhatsApp button
+            const restaurantName = "مطعم الحاتي السوري";
+            const contactMessage = `مرحباً! 👋\n\nأريد الاستفسار عن خدمات ${restaurantName}.\n\nيرجى تزويدي بمعلومات حول:\n- أوقات العمل\n- طريقة الطلب\n- خدمة التوصيل\n- العروض المتاحة\n\nشكراً لكم! 🍽️`;
+            
+            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(contactMessage)}`;
+            
+            try {
+                window.open(whatsappUrl, '_blank');
+                showToast('جاري فتح الواتساب للتواصل معنا!', 'success', 3000);
+            } catch (error) {
+                console.error('Error opening WhatsApp:', error);
+                showToast('خطأ في فتح الواتساب. يرجى المحاولة مرة أخرى.', 'error');
+            }
+        });
+    }
+    
+    // Call hero button functionality with feedback
+    const callHeroButton = document.getElementById('callHeroButton');
+    if (callHeroButton) {
+        callHeroButton.addEventListener('click', function() {
+            showToast('جاري فتح تطبيق الهاتف للاتصال...', 'info', 2000);
+        });
+    }
+    
+    // Facebook hero button functionality with feedback
+    const facebookHeroButton = document.getElementById('facebookHeroButton');
+    if (facebookHeroButton) {
+        facebookHeroButton.addEventListener('click', function() {
+            showToast('جاري فتح صفحة الفيسبوك...', 'info', 2000);
+        });
+    }
 });
 
 // Full-screen modal functions

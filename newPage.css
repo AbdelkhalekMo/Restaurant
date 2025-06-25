@@ -35,6 +35,96 @@ body {
     direction: rtl;
 }
 
+/* Enhanced Checkbox Styling */
+.form-check {
+    background: #f8f9fa;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.form-check:hover {
+    border-color: var(--primary-color);
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.1);
+}
+
+.form-check-input:checked + .form-check-label {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.form-check-input {
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #dee2e6;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.2);
+}
+
+.form-check-input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.2);
+}
+
+.form-check-label {
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-right: 10px;
+}
+
+.delivery-option .form-check {
+    border-color: #28a745;
+}
+
+.delivery-option .form-check:hover {
+    border-color: #1e7e34;
+    background: #f8fff9;
+}
+
+.delivery-option .form-check-input:checked {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+/* Radio Button Styling for Payment Methods */
+.form-check input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #dee2e6;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.form-check input[type="radio"]:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    position: relative;
+}
+
+.form-check input[type="radio"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    border-radius: 50%;
+}
+
 /* RTL Price Display */
 .cart-summary .d-flex,
 .order-summary .d-flex {
@@ -91,19 +181,61 @@ body {
     opacity: 0.9;
 }
 
-.sale-badge {
-    background: linear-gradient(45deg, var(--restaurant-orange), var(--restaurant-gold));
-    color: white;
-    padding: 15px 30px;
-    border-radius: 50px;
-    font-weight: bold;
-    box-shadow: var(--shadow-dark);
-    animation: pulse-badge 2s infinite;
+/* Hero Contact Buttons */
+.hero-contact-buttons .btn-hero {
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+    border-width: 2px;
+    text-decoration: none;
+    margin: 5px;
 }
 
-@keyframes pulse-badge {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+.hero-contact-buttons .btn-hero:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* WhatsApp Button in Hero - Filled */
+.hero-contact-buttons .btn-outline-success {
+    background-color: #25d366;
+    border-color: #25d366;
+    color: white;
+}
+
+.hero-contact-buttons .btn-outline-success:hover {
+    background-color: #1eb854;
+    border-color: #1eb854;
+    color: white;
+}
+
+/* Call Button in Hero - Filled */
+.hero-contact-buttons .btn-outline-light {
+    background-color: white;
+    border-color: white;
+    color: var(--primary-color);
+}
+
+.hero-contact-buttons .btn-outline-light:hover {
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+    color: var(--primary-color);
+}
+
+/* Facebook Button in Hero - Filled */
+.hero-contact-buttons .btn-outline-info {
+    background-color: #1877f2;
+    border-color: #1877f2;
+    color: white;
+}
+
+.hero-contact-buttons .btn-outline-info:hover {
+    background-color: #166fe5;
+    border-color: #166fe5;
+    color: white;
 }
 
 /* Menu Navigation */
@@ -579,6 +711,106 @@ body {
     color: var(--primary-color);
 }
 
+/* Enhanced Navbar Button Styling */
+.navbar .btn {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    margin: 0 2px;
+}
+
+.navbar .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* WhatsApp Button Enhanced */
+.navbar .btn-outline-success {
+    border-color: #25d366;
+    color: #25d366;
+}
+
+.navbar .btn-outline-success:hover {
+    background-color: #25d366;
+    border-color: #25d366;
+    color: white;
+}
+
+/* Call Button Enhanced */
+.navbar .btn-outline-primary {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.navbar .btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* Facebook Button Enhanced */
+.navbar .btn-outline-info {
+    border-color: #1877f2;
+    color: #1877f2;
+}
+
+.navbar .btn-outline-info:hover {
+    background-color: #1877f2;
+    border-color: #1877f2;
+    color: white;
+}
+
+/* Responsive navbar enhancements */
+@media (max-width: 992px) {
+    .navbar .d-flex {
+        flex-direction: column;
+        gap: 8px !important;
+        align-items: stretch;
+        width: 100%;
+    }
+    
+    .navbar .btn {
+        font-size: 0.85rem;
+        padding: 10px 12px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .navbar .d-flex {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px !important;
+    }
+    
+    .navbar .btn {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+        min-width: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar .btn {
+        font-size: 0.75rem;
+        padding: 6px 10px;
+    }
+    
+    .navbar .btn i {
+        margin-left: 4px !important;
+    }
+}
+
 /* Toast Notifications */
 #toast-container {
     position: fixed;
@@ -633,9 +865,10 @@ body {
         margin-bottom: 1.5rem;
     }
     
-    .sale-badge {
-        padding: 10px 20px;
-        font-size: 14px;
+    .hero-contact-buttons .btn-hero {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+        margin: 8px 4px;
     }
     
     /* Menu navigation improvements */
@@ -862,6 +1095,23 @@ body {
     
     .hero-section .lead {
         font-size: 1rem;
+    }
+    
+    .hero-contact-buttons {
+        margin-top: 2rem !important;
+    }
+    
+    .hero-contact-buttons .d-flex {
+        flex-direction: column;
+        gap: 12px !important;
+        align-items: center;
+    }
+    
+    .hero-contact-buttons .btn-hero {
+        padding: 14px 24px;
+        font-size: 1rem;
+        width: 280px;
+        text-align: center;
     }
     
     .category-btn {
