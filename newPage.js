@@ -10,15 +10,15 @@ const RESTAURANT_CART_KEY = 'restaurant_cart';
 const menuPDFs = [
     {
         id: 'menu1',
-        name: 'Food Menu',
+        name: 'قائمة الطعام',
         image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&h=800&fit=crop',
-        description: 'Complete food menu with all our delicious offerings'
+        description: 'قائمة طعام شاملة تضم جميع أطباقنا اللذيذة'
     },
     {
         id: 'menu2',
-        name: 'Beverages Menu',
+        name: 'قائمة المشروبات',
         image: 'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=600&h=800&fit=crop',
-        description: 'Full beverages menu including hot and cold drinks'
+        description: 'قائمة مشروبات كاملة تشمل المشروبات الساخنة والباردة'
     }
 ];
 
@@ -27,32 +27,32 @@ const menuItems = {
     'main-meals': [
         {
             id: 1,
-            name: 'Grilled Chicken Breast',
-            description: 'Tender grilled chicken breast marinated in herbs and spices, served with seasoned vegetables.',
+            name: 'صدر دجاج مشوي',
+            description: 'صدر دجاج طري مشوي ومتبل بالأعشاب والتوابل، يُقدم مع خضار متبلة.',
             price: 18.99,
             image: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=400&h=300&fit=crop',
             category: 'main-meals'
         },
         {
             id: 2,
-            name: 'Beef Steak',
-            description: 'Premium beef steak grilled to perfection, served with mashed potatoes and gravy.',
+            name: 'ستيك لحم البقر',
+            description: 'ستيك لحم بقري مميز مشوي إلى درجة الكمال، يُقدم مع البطاطا المهروسة والصلصة.',
             price: 24.99,
             image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop',
             category: 'main-meals'
         },
         {
             id: 3,
-            name: 'Salmon Fillet',
-            description: 'Fresh Atlantic salmon fillet with lemon butter sauce and steamed broccoli.',
+            name: 'فيليه السلمون',
+            description: 'فيليه سلمون أطلسي طازج مع صلصة الليمون والزبدة والبروكلي المطهو على البخار.',
             price: 22.99,
             image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400&h=300&fit=crop',
             category: 'main-meals'
         },
         {
             id: 4,
-            name: 'Pasta Carbonara',
-            description: 'Creamy pasta with bacon, eggs, and parmesan cheese in a rich sauce.',
+            name: 'باستا كاربونارا',
+            description: 'باستا كريمية مع لحم الخنزير المقدد والبيض وجبن البارميزان في صلصة غنية.',
             price: 16.99,
             image: 'https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400&h=300&fit=crop',
             category: 'main-meals'
@@ -61,32 +61,32 @@ const menuItems = {
     'smoking-meals': [
         {
             id: 5,
-            name: 'BBQ Ribs',
-            description: 'Slow-smoked pork ribs with our signature BBQ sauce and coleslaw.',
+            name: 'أضلاع بالباربكيو',
+            description: 'أضلاع خنزير مدخنة ببطء مع صلصة الباربكيو المميزة وسلطة الكرنب.',
             price: 26.99,
             image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=400&h=300&fit=crop',
             category: 'smoking-meals'
         },
         {
             id: 6,
-            name: 'Smoked Brisket',
-            description: 'Texas-style smoked beef brisket with smoky dry rub and BBQ sauce.',
+            name: 'لحم بقري مدخن',
+            description: 'لحم بقري مدخن على الطريقة التكساسية مع التتبيلة الجافة المدخنة وصلصة الباربكيو.',
             price: 28.99,
             image: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=400&h=300&fit=crop',
             category: 'smoking-meals'
         },
         {
             id: 7,
-            name: 'Smoked Wings',
-            description: 'Crispy smoked chicken wings with choice of buffalo, BBQ, or honey mustard sauce.',
+            name: 'أجنحة دجاج مدخنة',
+            description: 'أجنحة دجاج مدخنة ومقرمشة مع اختيارك من صلصة البافلو أو الباربكيو أو الخردل بالعسل.',
             price: 14.99,
             image: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=400&h=300&fit=crop',
             category: 'smoking-meals'
         },
         {
             id: 8,
-            name: 'Pulled Pork Sandwich',
-            description: 'Slow-smoked pulled pork with tangy BBQ sauce on a brioche bun.',
+            name: 'ساندوتش لحم خنزير مسحوب',
+            description: 'لحم خنزير مدخن ومسحوب ببطء مع صلصة الباربكيو الحامضة في خبز البريوش.',
             price: 15.99,
             image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=400&h=300&fit=crop',
             category: 'smoking-meals'
@@ -95,32 +95,32 @@ const menuItems = {
     'desserts': [
         {
             id: 9,
-            name: 'Chocolate Lava Cake',
-            description: 'Warm chocolate cake with molten center, served with vanilla ice cream.',
+            name: 'كيكة الشوكولاتة المنصهرة',
+            description: 'كيكة شوكولاتة دافئة مع وسط منصهر، تُقدم مع آيس كريم الفانيليا.',
             price: 8.99,
             image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=300&fit=crop',
             category: 'desserts'
         },
         {
             id: 10,
-            name: 'Tiramisu',
-            description: 'Classic Italian dessert with coffee-soaked ladyfingers and mascarpone.',
+            name: 'تيراميسو',
+            description: 'حلوى إيطالية كلاسيكية مع أصابع السيدة المنقوعة بالقهوة والماسكاربوني.',
             price: 7.99,
             image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=300&fit=crop',
             category: 'desserts'
         },
         {
             id: 11,
-            name: 'Cheesecake',
-            description: 'New York style cheesecake with fresh berry compote.',
+            name: 'كيك الجبن',
+            description: 'كيك الجبن على طريقة نيويورك مع مربى التوت الطازج.',
             price: 6.99,
             image: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&h=300&fit=crop',
             category: 'desserts'
         },
         {
             id: 12,
-            name: 'Ice Cream Sundae',
-            description: 'Three scoops of premium ice cream with chocolate sauce, nuts, and cherry.',
+            name: 'آيس كريم صنداي',
+            description: 'ثلاث كرات من الآيس كريم المميز مع صلصة الشوكولاتة والمكسرات والكرز.',
             price: 5.99,
             image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&h=300&fit=crop',
             category: 'desserts'
@@ -199,7 +199,7 @@ function addToCart(itemId) {
     const item = allItems.find(item => item.id === itemId);
     
     if (!item) {
-        showToast('Item not found!', 'error');
+        showToast('العنصر غير موجود!', 'error');
         return;
     }
 
@@ -223,7 +223,7 @@ function addToCart(itemId) {
     
     saveRestaurantCart(); // Save to localStorage
     updateCartDisplay();
-    showToast(`${item.name} added to cart!`, 'success', 2000);
+    showToast(`تم إضافة ${item.name} إلى السلة!`, 'success', 2000);
     
     // Reset quantity to 1 after adding to cart
     itemQuantities[itemId] = 1;
@@ -249,8 +249,8 @@ function updateCartDisplay() {
         cartItemsContainer.innerHTML = `
             <div class="text-center text-muted py-4">
                 <i class="fas fa-shopping-cart fa-3x mb-3 opacity-50"></i>
-                <p class="mb-0">Your cart is empty</p>
-                <small>Browse our delicious menu and add items to get started!</small>
+                <p class="mb-0">سلة التسوق فارغة</p>
+                <small>تصفح قائمة طعامنا اللذيذة وأضف العناصر للبدء!</small>
             </div>
         `;
         updateCartTotal();
@@ -269,7 +269,7 @@ function updateCartDisplay() {
                 <img src="${item.image}" alt="${item.name}" class="cart-item-image">
                 <div class="cart-item-details">
                     <div class="cart-item-title">${item.name}</div>
-                    <div class="cart-item-price">$${item.price.toFixed(2)} each</div>
+                    <div class="cart-item-price">${item.price.toFixed(2)} جنيه للقطعة</div>
                 </div>
                 <div class="cart-item-actions">
                     <div class="cart-item-quantity">
@@ -277,7 +277,7 @@ function updateCartDisplay() {
                         <span>${item.quantity}</span>
                         <button onclick="updateCartItemQuantity(${index}, 1)">+</button>
                     </div>
-                    <div class="fw-bold">$${itemTotal.toFixed(2)}</div>
+                    <div class="fw-bold">${itemTotal.toFixed(2)} جنيه</div>
                     <button class="cart-item-delete-btn" onclick="removeFromCart(${index})">
                         <i class="fas fa-trash"></i>
                     </button>
@@ -317,7 +317,7 @@ function updateCartTotal() {
     }
     
     // Update cart display
-    cartSubtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+    cartSubtotalElement.textContent = `${subtotal.toFixed(2)} جنيه`;
     
     if (deliveryFee > 0) {
         cartDeliveryFeeRow.style.display = 'flex';
@@ -326,7 +326,7 @@ function updateCartTotal() {
     }
     
     const total = subtotal + deliveryFee;
-    cartTotalElement.textContent = `$${total.toFixed(2)}`;
+    cartTotalElement.textContent = `${total.toFixed(2)} جنيه`;
 }
 
 // Update cart item quantity
@@ -345,7 +345,7 @@ function removeFromCart(index) {
     cart.splice(index, 1);
     saveRestaurantCart(); // Save to localStorage
     updateCartDisplay();
-    showToast('Item removed from cart', 'info', 2000);
+    showToast('تم حذف العنصر من السلة', 'info', 2000);
 }
 
 // Toggle cart visibility
@@ -390,10 +390,10 @@ function renderMenuItems() {
                             <p class="text-muted mb-3">${menu.description}</p>
                             <div class="menu-pdf-actions">
                                 <button class="fullscreen-btn" onclick="openFullscreen('${menu.image}', '${menu.name}')">
-                                    <i class="fas fa-expand me-2"></i>View Full Screen
+                                    <i class="fas fa-expand ms-2"></i>عرض بملء الشاشة
                                 </button>
                                 <button class="download-btn" onclick="downloadImage('${menu.image}', '${menu.name}')">
-                                    <i class="fas fa-download me-2"></i>Download
+                                    <i class="fas fa-download ms-2"></i>تحميل
                                 </button>
                             </div>
                         </div>
@@ -418,7 +418,7 @@ function renderMenuItems() {
                         <div class="menu-item-content">
                             <h3 class="menu-item-title">${item.name}</h3>
                             <p class="menu-item-description">${item.description}</p>
-                            <div class="menu-item-price">$${item.price.toFixed(2)}</div>
+                            <div class="menu-item-price">${item.price.toFixed(2)} جنيه</div>
                             <div class="menu-item-actions">
                                 <div class="quantity-control">
                                     <button onclick="changeQuantity(${item.id}, -1)">-</button>
@@ -426,7 +426,7 @@ function renderMenuItems() {
                                     <button onclick="changeQuantity(${item.id}, 1)">+</button>
                                 </div>
                                 <button class="add-to-cart-btn" onclick="addToCart(${item.id})">
-                                    <i class="fas fa-plus me-2"></i>Add to Cart
+                                    <i class="fas fa-plus ms-2"></i>أضف للسلة
                                 </button>
                             </div>
                         </div>
@@ -457,7 +457,7 @@ function updateOrderSummary() {
     const deliveryFee = deliveryCheckbox && deliveryCheckbox.checked ? 25 : 0;
     
     // Update display
-    orderSubtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+    orderSubtotalElement.textContent = `${subtotal.toFixed(2)} جنيه`;
     
     if (deliveryFee > 0) {
         deliveryFeeRow.style.display = 'flex';
@@ -466,7 +466,7 @@ function updateOrderSummary() {
     }
     
     const total = subtotal + deliveryFee;
-    orderTotalElement.textContent = `$${total.toFixed(2)}`;
+    orderTotalElement.textContent = `${total.toFixed(2)} جنيه`;
 }
 
 
@@ -480,7 +480,7 @@ function proceedToOrder() {
         updateOrderSummary(); // Update the order summary when proceeding to order
         orderSection.scrollIntoView({ behavior: 'smooth' });
     } else {
-        showToast('Your cart is empty. Add items first.', 'error');
+        showToast('سلة التسوق فارغة. أضف عناصر أولاً.', 'error');
         // Still scroll to show the form
         orderSection.scrollIntoView({ behavior: 'smooth' });
     }
@@ -584,14 +584,14 @@ document.addEventListener('DOMContentLoaded', function() {
                             address: `Lat: ${lat.toFixed(4)}, Lng: ${lng.toFixed(4)}`
                         };
                         
-                        showToast('Location detected successfully!', 'success', 2000);
+                        showToast('تم تحديد الموقع بنجاح!', 'success', 2000);
                     }, function() {
-                        showToast('Unable to get your location. Please try again.', 'error');
+                        showToast('تعذر الحصول على موقعك. يرجى المحاولة مرة أخرى.', 'error');
                         useLocationCheckbox.checked = false;
                         window.customerLocation = null;
                     });
                 } else {
-                    showToast('Geolocation is not supported by this browser.', 'error');
+                    showToast('خدمة تحديد الموقع غير مدعومة في هذا المتصفح.', 'error');
                     this.checked = false;
                     window.customerLocation = null;
                 }
@@ -608,7 +608,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             if (cart.length === 0) {
-                showToast('Your cart is empty! Add items to place an order.', 'error');
+                showToast('سلة التسوق فارغة! أضف عناصر لتقديم طلب.', 'error');
                 return;
             }
 
@@ -621,23 +621,23 @@ document.addEventListener('DOMContentLoaded', function() {
             const paymentMethod = selectedPaymentMethod ? selectedPaymentMethod.value : 'Not specified';
 
             // Create order summary for restaurant
-            let orderText = `🍽️ *NEW RESTAURANT ORDER* 🍽️\n\n`;
-            orderText += `👤 *Customer Details:*\n`;
-            orderText += `   - Name: ${name}\n`;
-            orderText += `   - Phone: ${phone}\n`;
-            orderText += `   - Delivery: ${deliveryOption ? 'Yes (+$25)' : 'No (Pickup)'}\n`;
+            let orderText = `🍽️ *طلب مطعم جديد* 🍽️\n\n`;
+            orderText += `👤 *تفاصيل العميل:*\n`;
+            orderText += `   - الاسم: ${name}\n`;
+            orderText += `   - الهاتف: ${phone}\n`;
+            orderText += `   - التوصيل: ${deliveryOption ? 'نعم (+25 جنيه)' : 'لا (استلام)'}\n`;
             
             // Add location information if available and delivery is selected
             if (deliveryOption && window.customerLocation) {
-                orderText += `   - Location: ${window.customerLocation.address}\n`;
-                orderText += `   - Map Link: ${window.customerLocation.mapLink}\n`;
+                orderText += `   - الموقع: ${window.customerLocation.address}\n`;
+                orderText += `   - رابط الخريطة: ${window.customerLocation.mapLink}\n`;
             }
             
             if (customerNotes.trim()) {
-                orderText += `   - Special Notes: ${customerNotes}\n`;
+                orderText += `   - ملاحظات خاصة: ${customerNotes}\n`;
             }
-            orderText += `   - Payment Method: ${paymentMethod}\n`;
-            orderText += `\n🛒 *Order Summary:*\n`;
+            orderText += `   - طريقة الدفع: ${paymentMethod}\n`;
+            orderText += `\n🛒 *ملخص الطلب:*\n`;
             orderText += `-------------------------------------\n`;
             
             let subtotal = 0;
@@ -646,25 +646,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 const itemTotal = item.price * item.quantity;
                 subtotal += itemTotal;
                 totalQuantity += item.quantity;
-                orderText += `*Item ${index + 1}: ${item.name}*\n`;
-                orderText += `   - Category: ${item.category.replace('-', ' ').toUpperCase()}\n`;
-                orderText += `   - Quantity: ${item.quantity}\n`;
-                orderText += `   - Price per item: $${item.price.toFixed(2)}\n`;
-                orderText += `   - Subtotal: $${itemTotal.toFixed(2)}\n`;
+                orderText += `*العنصر ${index + 1}: ${item.name}*\n`;
+                orderText += `   - الفئة: ${item.category.replace('-', ' ').toUpperCase()}\n`;
+                orderText += `   - الكمية: ${item.quantity}\n`;
+                orderText += `   - سعر القطعة: ${item.price.toFixed(2)} جنيه\n`;
+                orderText += `   - المجموع الفرعي: ${itemTotal.toFixed(2)} جنيه\n`;
                 orderText += `-------------------------------------\n`;
             });
             
             const deliveryFee = deliveryOption ? 25 : 0;
             const total = subtotal + deliveryFee;
             
-            orderText += `\n📦 *Total Items: ${totalQuantity}*\n`;
-            orderText += `💰 *Subtotal: $${subtotal.toFixed(2)}*\n`;
+            orderText += `\n📦 *إجمالي العناصر: ${totalQuantity}*\n`;
+            orderText += `💰 *المجموع الفرعي: ${subtotal.toFixed(2)} جنيه*\n`;
             if (deliveryFee > 0) {
-                orderText += `🚚 *Delivery Fee: $${deliveryFee.toFixed(2)}*\n`;
+                orderText += `🚚 *رسوم التوصيل: ${deliveryFee.toFixed(2)} جنيه*\n`;
             }
-            orderText += `💰 *GRAND TOTAL: $${total.toFixed(2)}*\n\n`;
-            orderText += `Please confirm this order and provide estimated delivery time.\n`;
-            orderText += `Thank you for choosing Taste Heaven! 🙏`;
+            orderText += `💰 *الإجمالي الكلي: ${total.toFixed(2)} جنيه*\n\n`;
+            orderText += `يرجى تأكيد هذا الطلب وتحديد وقت التوصيل المتوقع.\n`;
+            orderText += `شكراً لاختياركم جنة الطعم! 🙏`;
 
             // Create WhatsApp URL
             const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(orderText)}`;
@@ -679,10 +679,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 updateCartDisplay();
                 orderForm.reset();
                 
-                showToast('Order details sent to WhatsApp! We will contact you soon.', 'success', 5000);
+                showToast('تم إرسال تفاصيل الطلب إلى الواتساب! سنتواصل معكم قريباً.', 'success', 5000);
             } catch (error) {
                 console.error('Error opening WhatsApp:', error);
-                showToast('Error sending order to WhatsApp. Please try again.', 'error');
+                showToast('خطأ في إرسال الطلب إلى الواتساب. يرجى المحاولة مرة أخرى.', 'error');
             }
         });
     }
@@ -736,7 +736,7 @@ function downloadImage(imageUrl, imageName) {
     link.click();
     document.body.removeChild(link);
     
-    showToast(`${imageName} download started!`, 'success', 2000);
+    showToast(`بدأ تحميل ${imageName}!`, 'success', 2000);
 }
 
 // Close modal when clicking outside the image

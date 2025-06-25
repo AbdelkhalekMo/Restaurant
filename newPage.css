@@ -10,10 +10,49 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Arial Unicode MS';
     color: var(--text-color);
     line-height: 1.6;
     background: #fafafa;
+    direction: rtl;
+    text-align: right;
+}
+
+/* RTL Support */
+.navbar-brand {
+    direction: ltr;
+}
+
+.d-flex {
+    flex-direction: row-reverse;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.btn {
+    direction: rtl;
+}
+
+/* RTL Price Display */
+.cart-summary .d-flex,
+.order-summary .d-flex {
+    justify-content: space-between;
+    text-align: right;
+}
+
+.cart-summary .d-flex span:first-child,
+.order-summary .d-flex span:first-child,
+.cart-summary .d-flex h5:first-child,
+.order-summary .d-flex h5:first-child {
+    text-align: left;
+    font-weight: bold;
+}
+
+.cart-summary .d-flex span:last-child,
+.order-summary .d-flex span:last-child {
+    text-align: right;
 }
 
 .hero-section {
