@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu - Delicious Meals</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="newPage.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="fas fa-utensils me-2 text-primary"></i>
+                <span id="site-title">Taste Heaven</span>
+            </a>
+            <div class="d-flex align-items-center">
+                <button class="btn btn-outline-primary position-relative me-3" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    Cart
+                    <span id="cart-count" class="badge bg-danger position-absolute top-0 start-100 translate-middle" style="display: none;">0</span>
+                </button>
+                <a href="#" class="btn btn-outline-success me-3" id="whatsappNavButton" title="Order on WhatsApp">
+                    <i class="fab fa-whatsapp me-1"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <canvas id="rainCanvas"></canvas>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-8">
+                    <h1 class="display-3 fw-bolder mb-4">Welcome to Taste Heaven</h1>
+                    <p class="lead fs-4 mb-5 opacity-75">Discover our exquisite menu featuring the finest main meals, premium smoking dishes, and delightful desserts.</p>
+                </div>
+            </div>
+            <div class="sale-badge-container text-center mt-4">
+                 <div class="sale-badge d-inline-block">
+                    <i class="fas fa-fire me-2"></i> Chef's Special: Order 3 Get 1 Free!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Categories Navigation -->
+    <section class="menu-nav-section py-4 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="d-flex justify-content-center flex-wrap gap-3">
+                        <button class="btn btn-outline-primary category-btn active" data-category="menu">
+                            <i class="fas fa-book-open me-2"></i>Menu
+                        </button>
+                        <button class="btn btn-outline-primary category-btn" data-category="main-meals">
+                            <i class="fas fa-drumstick-bite me-2"></i>Main Meals
+                        </button>
+                        <button class="btn btn-outline-primary category-btn" data-category="smoking-meals">
+                            <i class="fas fa-fire me-2"></i>Smoking Meals
+                        </button>
+                        <button class="btn btn-outline-primary category-btn" data-category="desserts">
+                            <i class="fas fa-ice-cream me-2"></i>Desserts
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section py-5">
+        <div class="container">
+            <!-- Menu Section -->
+            <div class="menu-category" id="menu">
+                <h2 class="section-title text-center mb-5">
+                    <i class="fas fa-book-open me-3"></i>Restaurant Menu
+                </h2>
+                <div class="row justify-content-center" id="menu-container">
+                    <!-- Menu cards will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <!-- Main Meals Section -->
+            <div class="menu-category" id="main-meals" style="display: none;">
+                <h2 class="section-title text-center mb-5">
+                    <i class="fas fa-drumstick-bite me-3"></i>Main Meals
+                </h2>
+                <div class="row" id="main-meals-container">
+                    <!-- Main meal cards will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <!-- Smoking Meals Section -->
+            <div class="menu-category" id="smoking-meals" style="display: none;">
+                <h2 class="section-title text-center mb-5">
+                    <i class="fas fa-fire me-3"></i>Smoking Meals
+                </h2>
+                <div class="row" id="smoking-meals-container">
+                    <!-- Smoking meal cards will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <!-- Desserts Section -->
+            <div class="menu-category" id="desserts" style="display: none;">
+                <h2 class="section-title text-center mb-5">
+                    <i class="fas fa-ice-cream me-3"></i>Desserts
+                </h2>
+                <div class="row" id="desserts-container">
+                    <!-- Dessert cards will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <div id="cartSection" class="container mt-5">
+        <div class="card shadow-lg">
+            <div class="card-header">
+                <h4 class="mb-0"><i class="fas fa-shopping-cart me-2"></i>Your Order</h4>
+            </div>
+            <div class="card-body p-4">
+                <div id="cartItems" class="mb-4">
+                    <!-- Cart items will be dynamically inserted here -->
+                </div>
+                <div class="d-flex justify-content-between align-items-center border-top pt-3">
+                    <h5 class="mb-0">Total:</h5>
+                    <h5 class="mb-0 cart-total" id="cartTotal">$0.00</h5>
+                </div>
+                <div class="text-center mt-4">
+                    <button class="btn btn-checkout btn-lg w-100" onclick="proceedToOrder()">
+                        Proceed to Order <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Section -->
+    <section class="py-5 bg-light" id="orderSection">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="mb-0"><i class="fas fa-clipboard-list me-2"></i>Complete Your Order</h4>
+                        </div>
+                        <div class="card-body">
+                            <form id="orderForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="customerName" class="form-label">Full Name *</label>
+                                        <input type="text" class="form-control" id="customerName" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="customerPhone" class="form-label">Phone Number *</label>
+                                        <input type="tel" class="form-control" id="customerPhone" required>
+                                    </div>
+                                </div>
+
+                                <!-- Location Section -->
+                                <div class="location-section">
+                                    <h5><i class="fas fa-map-marker-alt me-2"></i>Delivery Location</h5>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="useCurrentLocation">
+                                        <label class="form-check-label" for="useCurrentLocation">
+                                            Use my current location
+                                        </label>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="deliveryAddress" class="form-label">Delivery Address *</label>
+                                        <textarea class="form-control" id="deliveryAddress" rows="3" required></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Payment Method -->
+                                <div class="mb-4">
+                                    <h5><i class="fas fa-credit-card me-2"></i>Payment Method *</h5>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="paymentMethod" id="payInHand" value="Pay in Hand" required checked>
+                                        <label class="form-check-label" for="payInHand">
+                                            Pay in Hand (Cash on Delivery)
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="paymentMethod" id="instapay" value="Instapay" required>
+                                        <label class="form-check-label" for="instapay">
+                                            Instapay Transfer
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn whatsapp-btn btn-lg">
+                                        <i class="fab fa-whatsapp me-2"></i>Order via WhatsApp
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="newPage.js"></script>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
+
+    <!-- Full-screen Modal for Menu Images -->
+    <div id="fullscreenModal" class="fullscreen-modal">
+        <span class="modal-close" onclick="closeFullscreen()">&times;</span>
+        <button class="modal-download" onclick="downloadCurrentImage()">
+            <i class="fas fa-download me-2"></i>Download
+        </button>
+        <div class="fullscreen-modal-content">
+            <img id="fullscreenImage" src="" alt="Menu">
+        </div>
+    </div>
+</body>
+</html>
