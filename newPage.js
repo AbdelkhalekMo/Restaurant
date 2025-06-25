@@ -375,7 +375,7 @@ function renderMenuItems() {
         let html = '';
         menuItems[category].forEach(item => {
             html += `
-                <div class="col-lg-6 col-xl-4 mb-4">
+                <div class="col-sm-6 col-lg-6 col-xl-4 mb-4">
                     <div class="menu-item-card">
                         <img src="${item.image}" alt="${item.name}" class="menu-item-image">
                         <div class="menu-item-content">

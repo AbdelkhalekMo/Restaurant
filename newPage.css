@@ -840,3 +840,36 @@ body {
         padding-right: 10px;
     }
 }
+
+/* Touch-friendly enhancements */
+@media (max-width: 768px) and (pointer: coarse) {
+    /* Increase touch targets for better mobile interaction */
+    .btn, .category-btn {
+        min-height: 44px; /* Apple's recommended touch target */
+        min-width: 44px;
+    }
+    
+    .add-to-cart-btn {
+        min-height: 48px;
+        font-weight: 600;
+    }
+    
+    .quantity-control button {
+        min-height: 40px;
+        min-width: 40px;
+    }
+    
+    .cart-item-delete-btn {
+        min-height: 40px;
+        min-width: 40px;
+    }
+    
+    /* Improve spacing for finger navigation */
+    .menu-item-actions {
+        gap: 1rem;
+    }
+    
+    .cart-item-actions {
+        gap: 1rem;
+    }
+}
