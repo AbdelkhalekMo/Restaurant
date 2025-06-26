@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">
-                <span id="site-title">مطعم الحاتي السوري</span>
+                <span id="site-title">مطعم مشويات المنسي</span>
                 <i class="fas fa-utensils me-2 text-primary"></i>
             </a>
             <div class="d-flex align-items-center">
@@ -32,8 +32,8 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-8">
-                    <h1 class="display-3 fw-bolder mb-4">أهلاً بكم في مطعم الحاتي السوري</h1>
-                    <p class="lead fs-4 mb-5 opacity-75">اكتشفوا قائمة طعامنا المميزة التي تضم أشهى الوجبات الرئيسية والأطباق المدخنة والحلويات اللذيذة.</p>
+                    <h1 class="display-3 fw-bolder mb-4">أهلاً بكم في مطعم مشويات المنسي</h1>
+                    <p class="lead fs-4 mb-5 opacity-75">أصيل الطعم المصري - اكتشفوا قائمة طعامنا المميزة من الأطباق المصرية الأصيلة والطعمية الطازجة والسلطات المنعشة.</p>
                 </div>
             </div>
             <div class="hero-contact-buttons text-center mt-4">
@@ -58,17 +58,14 @@
             <div class="row justify-content-center">
                 <div class="col-12">
                     <div class="d-flex justify-content-center flex-wrap gap-3">
-                        <button class="btn btn-outline-primary category-btn" data-category="appetizers">
-                            <i class="fas fa-seedling ms-2"></i>الإضافات
+                        <button class="btn btn-outline-primary category-btn" data-category="cooking">
+                            <i class="fas fa-fire ms-2"></i>التسوية
                         </button>
-                        <button class="btn btn-outline-primary category-btn" data-category="desserts">
-                            <i class="fas fa-ice-cream ms-2"></i>الحلويات
+                        <button class="btn btn-outline-primary category-btn" data-category="meals">
+                            <i class="fas fa-utensils ms-2"></i>الوجبات
                         </button>
-                        <button class="btn btn-outline-primary category-btn" data-category="smoking-meals">
-                            <i class="fas fa-fire ms-2"></i>الأطباق المدخنة
-                        </button>
-                        <button class="btn btn-outline-primary category-btn" data-category="main-meals">
-                            <i class="fas fa-drumstick-bite ms-2"></i>الوجبات الرئيسية
+                        <button class="btn btn-outline-primary category-btn" data-category="grilled">
+                            <i class="fas fa-drumstick-bite ms-2"></i>المشويات
                         </button>
                         <button class="btn btn-outline-primary category-btn active" data-category="menu">
                             <i class="fas fa-book-open ms-2"></i>القائمة
@@ -82,53 +79,43 @@
     <!-- Menu Section -->
     <section class="menu-section py-5">
         <div class="container">
-            <!-- Appetizers Section (Rightmost) -->
-            <div class="menu-category" id="appetizers" style="display: none;">
-                <h2 class="section-title text-center mb-5">
-                    <i class="fas fa-seedling ms-3"></i>الإضافات والمقبلات
-                </h2>
-                <div class="row" id="appetizers-container">
-                    <!-- Appetizer cards will be dynamically inserted here -->
-                </div>
-            </div>
-
-            <!-- Desserts Section -->
-            <div class="menu-category" id="desserts" style="display: none;">
-                <h2 class="section-title text-center mb-5">
-                    <i class="fas fa-ice-cream ms-3"></i>الحلويات
-                </h2>
-                <div class="row" id="desserts-container">
-                    <!-- Dessert cards will be dynamically inserted here -->
-                </div>
-            </div>
-
-            <!-- Smoking Meals Section -->
-            <div class="menu-category" id="smoking-meals" style="display: none;">
-                <h2 class="section-title text-center mb-5">
-                    <i class="fas fa-fire ms-3"></i>الأطباق المدخنة
-                </h2>
-                <div class="row" id="smoking-meals-container">
-                    <!-- Smoking meal cards will be dynamically inserted here -->
-                </div>
-            </div>
-
-            <!-- Main Meals Section -->
-            <div class="menu-category" id="main-meals" style="display: none;">
-                <h2 class="section-title text-center mb-5">
-                    <i class="fas fa-drumstick-bite ms-3"></i>الوجبات الرئيسية
-                </h2>
-                <div class="row" id="main-meals-container">
-                    <!-- Main meal cards will be dynamically inserted here -->
-                </div>
-            </div>
-
-            <!-- Menu Section (Leftmost) -->
+            <!-- Menu Section -->
             <div class="menu-category" id="menu">
                 <h2 class="section-title text-center mb-5">
                     <i class="fas fa-book-open ms-3"></i>قائمة المطعم
                 </h2>
                 <div class="row justify-content-center" id="menu-container">
                     <!-- Menu cards will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <!-- Grilled Section -->
+            <div class="menu-category" id="grilled" style="display: none;">
+                <h2 class="section-title text-center mb-5">
+                    <i class="fas fa-drumstick-bite ms-3"></i>المشويات
+                </h2>
+                <div class="row" id="grilled-container">
+                    <!-- Grilled item cards will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <!-- Meals Section -->
+            <div class="menu-category" id="meals" style="display: none;">
+                <h2 class="section-title text-center mb-5">
+                    <i class="fas fa-utensils ms-3"></i>الوجبات
+                </h2>
+                <div class="row" id="meals-container">
+                    <!-- Meal item cards will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <!-- Cooking Section -->
+            <div class="menu-category" id="cooking" style="display: none;">
+                <h2 class="section-title text-center mb-5">
+                    <i class="fas fa-fire ms-3"></i>التسوية
+                </h2>
+                <div class="row" id="cooking-container">
+                    <!-- Cooking service cards will be dynamically inserted here -->
                 </div>
             </div>
         </div>

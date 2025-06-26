@@ -24,156 +24,170 @@ const menuPDFs = [
 
 // Menu items data
 const menuItems = {
-    'appetizers': [
+    'grilled': [
         {
-            id: 101,
-            name: 'حمص بالطحينة',
-            description: 'حمص كريمي مع الطحينة وزيت الزيتون والبقدونس، يُقدم مع الخبز العربي الطازج.',
-            price: 8.99,
-            image: 'https://images.unsplash.com/photo-1541554515219-543db1496ea4?w=400&h=300&fit=crop',
-            category: 'appetizers'
+            id: 201,
+            name: 'فرخة شوايه',
+            description: 'فرخة مشوية طازجة ومتبلة بالتوابل الشرقية',
+            price: 170.00,
+            image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400&h=300&fit=crop',
+            category: 'grilled'
         },
         {
-            id: 102,
-            name: 'متبل الباذنجان',
-            description: 'باذنجان مشوي مع الطحينة والثوم والليمون، طبق شامي تقليدي بنكهة مميزة.',
-            price: 9.99,
-            image: 'https://images.unsplash.com/photo-1564757286322-0672500e0b95?w=400&h=300&fit=crop',
-            category: 'appetizers'
+            id: 202,
+            name: 'فرخة شيش',
+            description: 'فرخة شيش طرية ومشوية على الفحم',
+            price: 170.00,
+            image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=300&fit=crop',
+            category: 'grilled'
         },
         {
-            id: 103,
-            name: 'فتة حمص',
-            description: 'خبز محمص مع الحمص واللبن والطحينة والصنوبر المحمص، وجبة شهية ومشبعة.',
-            price: 12.99,
-            image: 'https://images.unsplash.com/photo-1599759067470-7f9a5bb18709?w=400&h=300&fit=crop',
-            category: 'appetizers'
-        },
-        {
-            id: 104,
-            name: 'ورق عنب',
-            description: 'ورق عنب محشي بالأرز والخضار والأعشاب الطازجة، يُقدم مع اللبن وشرائح الليمون.',
-            price: 11.99,
-            image: 'https://images.unsplash.com/photo-1590746768817-5f7c9fb0e90b?w=400&h=300&fit=crop',
-            category: 'appetizers'
-        },
-        {
-            id: 105,
-            name: 'كبة نية',
-            description: 'كبة نية شامية تقليدية مع البرغل واللحم النيء والبصل والبهارات، طبق للذواقة.',
-            price: 15.99,
-            image: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=300&fit=crop',
-            category: 'appetizers'
-        },
-        {
-            id: 106,
-            name: 'سلطة فتوش',
-            description: 'سلطة خضار مشكلة مع الخبز المحمص والسماق ودبس الرمان، منعشة وصحية.',
-            price: 10.99,
-            image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop',
-            category: 'appetizers'
-        }
-    ],
-    'main-meals': [
-        {
-            id: 1,
-            name: 'صدر دجاج مشوي',
-            description: 'صدر دجاج طري مشوي ومتبل بالأعشاب والتوابل، يُقدم مع خضار متبلة.',
-            price: 18.99,
-            image: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=400&h=300&fit=crop',
-            category: 'main-meals'
-        },
-        {
-            id: 2,
-            name: 'ستيك لحم البقر',
-            description: 'ستيك لحم بقري مميز مشوي إلى درجة الكمال، يُقدم مع البطاطا المهروسة والصلصة.',
-            price: 24.99,
-            image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop',
-            category: 'main-meals'
-        },
-        {
-            id: 3,
-            name: 'فيليه السلمون',
-            description: 'فيليه سلمون أطلسي طازج مع صلصة الليمون والزبدة والبروكلي المطهو على البخار.',
-            price: 22.99,
-            image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400&h=300&fit=crop',
-            category: 'main-meals'
-        },
-        {
-            id: 4,
-            name: 'باستا كاربونارا',
-            description: 'باستا كريمية مع لحم الخنزير المقدد والبيض وجبن البارميزان في صلصة غنية.',
-            price: 16.99,
-            image: 'https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400&h=300&fit=crop',
-            category: 'main-meals'
-        }
-    ],
-    'smoking-meals': [
-        {
-            id: 5,
-            name: 'أضلاع بالباربكيو',
-            description: 'أضلاع خنزير مدخنة ببطء مع صلصة الباربكيو المميزة وسلطة الكرنب.',
-            price: 26.99,
+            id: 203,
+            name: 'كباب و كباب',
+            description: 'مزيج من الكباب اللحم المفروم المشوي بالتوابل',
+            price: 430.00,
             image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=400&h=300&fit=crop',
-            category: 'smoking-meals'
+            category: 'grilled'
         },
         {
-            id: 6,
-            name: 'لحم بقري مدخن',
-            description: 'لحم بقري مدخن على الطريقة التكساسية مع التتبيلة الجافة المدخنة وصلصة الباربكيو.',
-            price: 28.99,
+            id: 204,
+            name: 'كباب كباب متاكل',
+            description: 'كباب لحم مفروم متبل ومشوي على الطريقة التركية',
+            price: 400.00,
             image: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=400&h=300&fit=crop',
-            category: 'smoking-meals'
+            category: 'grilled'
         },
         {
-            id: 7,
-            name: 'أجنحة دجاج مدخنة',
-            description: 'أجنحة دجاج مدخنة ومقرمشة مع اختيارك من صلصة البافلو أو الباربكيو أو الخردل بالعسل.',
-            price: 14.99,
+            id: 205,
+            name: 'كباب حاكم ضاني',
+            description: 'كباب لحم ضاني فاخر مشوي على الفحم',
+            price: 260.00,
+            image: 'https://images.unsplash.com/photo-1558030006-450675393462?w=400&h=300&fit=crop',
+            category: 'grilled'
+        },
+        {
+            id: 206,
+            name: 'كباب طريق ضاني',
+            description: 'كباب ضاني مشوي على الطريقة البلدية',
+            price: 280.00,
             image: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=400&h=300&fit=crop',
-            category: 'smoking-meals'
+            category: 'grilled'
         },
         {
-            id: 8,
-            name: 'ساندوتش لحم خنزير مسحوب',
-            description: 'لحم خنزير مدخن ومسحوب ببطء مع صلصة الباربكيو الحامضة في خبز البريوش.',
-            price: 15.99,
-            image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=400&h=300&fit=crop',
-            category: 'smoking-meals'
+            id: 207,
+            name: 'كباب حاكم فراخ',
+            description: 'كباب فراخ طري ومشوي بالتوابل الخاصة',
+            price: 200.00,
+            image: 'https://images.unsplash.com/photo-1607131760875-b5b3d5bd41e9?w=400&h=300&fit=crop',
+            category: 'grilled'
+        },
+        {
+            id: 208,
+            name: 'كباب شيش حلاوقت',
+            description: 'شيش كباب طازج مشوي مع الخضار',
+            price: 200.00,
+            image: 'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=400&h=300&fit=crop',
+            category: 'grilled'
+        },
+        {
+            id: 209,
+            name: 'نصف تكا مكاني عادي',
+            description: 'نصف تكا لحم مكاني مشوي - عادي',
+            price: 90.00,
+            image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop',
+            category: 'grilled'
+        },
+        {
+            id: 210,
+            name: 'نصف تكا مكاني سباستي',
+            description: 'نصف تكا لحم مكاني مشوي - سباستي',
+            price: 90.00,
+            image: 'https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400&h=300&fit=crop',
+            category: 'grilled'
         }
     ],
-    'desserts': [
+    'meals': [
         {
-            id: 9,
-            name: 'كيكة الشوكولاتة المنصهرة',
-            description: 'كيكة شوكولاتة دافئة مع وسط منصهر، تُقدم مع آيس كريم الفانيليا.',
-            price: 8.99,
-            image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&h=300&fit=crop',
-            category: 'desserts'
+            id: 301,
+            name: 'فرد حمام ملحي',
+            description: 'حمام ملحي طازج محضر بالطريقة التقليدية',
+            price: 65.00,
+            image: 'https://images.unsplash.com/photo-1562967914-608f82629710?w=400&h=300&fit=crop',
+            category: 'meals'
         },
         {
-            id: 10,
-            name: 'تيراميسو',
-            description: 'حلوى إيطالية كلاسيكية مع أصابع السيدة المنقوعة بالقهوة والماسكاربوني.',
-            price: 7.99,
-            image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=300&fit=crop',
-            category: 'desserts'
+            id: 302,
+            name: 'ربع فرخة + سيد حنفية',
+            description: 'ربع فرخة مع أرز وسلطة وعيش',
+            price: 65.00,
+            image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400&h=300&fit=crop',
+            category: 'meals'
         },
         {
-            id: 11,
-            name: 'كيك الجبن',
-            description: 'كيك الجبن على طريقة نيويورك مع مربى التوت الطازج.',
-            price: 6.99,
-            image: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&h=300&fit=crop',
-            category: 'desserts'
+            id: 303,
+            name: 'ربع فرخة شوايه أو شيش',
+            description: 'ربع فرخة شوايه أو شيش مع أرز وسلطة وعيش',
+            price: 50.00,
+            image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=300&fit=crop',
+            category: 'meals'
         },
         {
-            id: 12,
-            name: 'آيس كريم صنداي',
-            description: 'ثلاث كرات من الآيس كريم المميز مع صلصة الشوكولاتة والمكسرات والكرز.',
-            price: 5.99,
-            image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&h=300&fit=crop',
-            category: 'desserts'
+            id: 304,
+            name: 'نصف فرخة شوايه أو شيش',
+            description: 'نصف فرخة شوايه أو شيش مع أرز وسلطة وعيش',
+            price: 90.00,
+            image: 'https://images.unsplash.com/photo-1607131760875-b5b3d5bd41e9?w=400&h=300&fit=crop',
+            category: 'meals'
+        }
+    ],
+    'cooking': [
+        {
+            id: 401,
+            name: 'تسوية بحر',
+            description: 'خدمة تسوية وطبخ المأكولات البحرية',
+            price: 40.00,
+            image: 'https://images.unsplash.com/photo-1559847844-d721426d6edc?w=400&h=300&fit=crop',
+            category: 'cooking'
+        },
+        {
+            id: 402,
+            name: 'تسوية فرخة',
+            description: 'خدمة تسوية وطبخ الفراخ',
+            price: 25.00,
+            image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400&h=300&fit=crop',
+            category: 'cooking'
+        },
+        {
+            id: 403,
+            name: 'تسوية رومي',
+            description: 'خدمة تسوية وطبخ الديك الرومي',
+            price: 30.00,
+            image: 'https://images.unsplash.com/photo-1562967914-608f82629710?w=400&h=300&fit=crop',
+            category: 'cooking'
+        },
+        {
+            id: 404,
+            name: 'تسوية كباب أحمر',
+            description: 'خدمة تسوية وطبخ الكباب الأحمر',
+            price: 25.00,
+            image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=400&h=300&fit=crop',
+            category: 'cooking'
+        },
+        {
+            id: 405,
+            name: 'تسوية كباب حنفية',
+            description: 'خدمة تسوية وطبخ كباب الحنفية',
+            price: 25.00,
+            image: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=400&h=300&fit=crop',
+            category: 'cooking'
+        },
+        {
+            id: 406,
+            name: 'تسوية فرخة كبيرة',
+            description: 'خدمة تسوية وطبخ الفراخ الكبيرة',
+            price: 30.00,
+            image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=300&fit=crop',
+            category: 'cooking'
         }
     ]
 };
@@ -789,7 +803,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             // Create a general contact message for hero WhatsApp button
-            const restaurantName = "مطعم الحاتي السوري";
+            const restaurantName = "مطعم مشويات المنسي";
             const contactMessage = `مرحباً! 👋\n\nأريد الاستفسار عن خدمات ${restaurantName}.\n\nيرجى تزويدي بمعلومات حول:\n- أوقات العمل\n- طريقة الطلب\n- خدمة التوصيل\n- العروض المتاحة\n\nشكراً لكم! 🍽️`;
             
             const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(contactMessage)}`;
